@@ -94,6 +94,21 @@ body {
   font-family: var(--font-sans);
 }
 
+/* contact page: keep footer pinned to the bottom on tall screens */
+.page-contact {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+}
+
+.page-contact > main {
+  flex: 1 0 auto;
+}
+
+.page-contact > .site-closing {
+  flex-shrink: 0;
+}
+
 h1,
 h2,
 h3,
