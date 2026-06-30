@@ -1,0 +1,9 @@
+node_modules/
+
+# editor / ai tooling (local only)
+.cursor/
+.cursorrules
+AGENTS.md
+.agent/
+.claude/
+.codex/
