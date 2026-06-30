@@ -3,6 +3,9 @@
 
   const hero = document.querySelector("[data-hero]");
   const heroBars = Array.from(document.querySelectorAll("[data-hero-bar]"));
+  const heroBarFills = heroBars
+    .map((bar) => bar.querySelector("[data-hero-bar-fill]"))
+    .filter(Boolean);
   const heroImage = document.querySelector("[data-hero-image]");
   const heroArcPaths = Array.from(document.querySelectorAll("[data-hero-arc-path]"));
   const heroArcTerminal = document.querySelector("[data-hero-arc-terminal]");
@@ -79,11 +82,22 @@
     }
 
     window.anime.set(heroContentItems, { opacity: 0, translateY: 20 });
-    heroBars.forEach((bar) => window.anime.set(bar, { scaleY: 0 }));
+    heroBarFills.forEach((fill) => {
+      fill.style.transformOrigin = "50% 100%";
+      window.anime.set(fill, { scaleY: 0 });
+    });
 
     finishHeroReveal();
 
-    const timeline = window.anime.timeline({ easing: motion.easeOut });
+    const timeline = window.anime.timeline({
+      easing: motion.easeOut,
+      complete: function () {
+        heroBarFills.forEach((fill) => {
+          fill.style.transform = "";
+          fill.style.transformOrigin = "";
+        });
+      },
+    });
 
     timeline.add({
       targets: heroContentItems,
@@ -93,12 +107,13 @@
       delay: window.anime.stagger(90),
     });
 
-    if (heroBars.length > 0) {
+    if (heroBarFills.length > 0) {
       timeline.add(
         {
-          targets: heroBars,
+          targets: heroBarFills,
           scaleY: [0, 1],
-          duration: 1400,
+          duration: 1200,
+          delay: window.anime.stagger(600),
           easing: "easeOutQuint",
         },
         220
