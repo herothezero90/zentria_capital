@@ -1,0 +1,66 @@
+---
+// Shared site navigation. Rendered on every page (hero 1, hero 2, contact,
+// insights) with different logo/menu-id/active-link combinations.
+// Props:
+//   theme    — "dark" (white logo on navy hero) | "light" (navy logo on light bg)
+//   active   — which nav item is highlighted: "home" | "contact" | "insights"
+//   menuId   — unique id for the mobile menu (pages with two headers need distinct ids)
+//   navClass — extra classes on the <nav> (e.g. "hero2-site-header page-site-header")
+const { theme, active, menuId = "site-menu", navClass = "" } = Astro.props;
+
+const onHome = active === "home";
+const links = [
+  { label: "Home", href: "/", key: "home" },
+  { label: "About", href: onHome ? "#about" : "/#about", key: "about" },
+  { label: "Insights", href: "/insights", key: "insights" },
+  { label: "FAQ", href: onHome ? "#faq" : "/#faq", key: "faq" },
+  { label: "Contact", href: "/contact", key: "contact" },
+];
+
+const logoFull = theme === "dark" ? "/images/zentria-logo-white-cropped.png" : "/images/zentria-logo-cropped.png";
+const logoMark = theme === "dark" ? "/images/zentria-mark-white.png" : "/images/zentria-mark.png";
+const markSize = theme === "dark" ? { width: 475, height: 511 } : { width: 512, height: 512 };
+---
+
+<nav class={`hero-site-header ${navClass}`.trim()} aria-label="Main navigation">
+  <a href="/" class="site-logo-link" aria-label="Zentria Capital home">
+    <img src={logoFull} alt="Zentria Capital" class="site-logo site-logo--full" width="668" height="388" />
+    <img src={logoMark} alt="" class="site-logo site-logo--mark" width={markSize.width} height={markSize.height} />
+  </a>
+
+  <div class="hero-nav-pill hidden md:flex">
+    {links.map((link) => (
+      <a
+        class:list={["hero-nav-link", { "is-active": link.key === active }]}
+        href={link.href}
+        aria-current={link.key === active ? "page" : undefined}
+      >{link.label}</a>
+    ))}
+  </div>
+
+  <a class="btn-primary btn-pill hidden md:inline-flex" href="/contact">Start Enquiry</a>
+
+  <button class="hero-nav-toggle md:hidden" type="button" data-nav-toggle aria-controls={menuId}
+    aria-expanded="false">
+    <span class="sr-only">Open navigation</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+      stroke-linejoin="round" aria-hidden="true">
+      <path d="M3 6h18" />
+      <path d="M3 12h13" />
+      <path d="M3 18h18" />
+    </svg>
+  </button>
+
+  <div id={menuId} class="hero-mobile-menu hidden" data-nav-menu>
+    <nav class="mobile-menu-links" aria-label="Mobile navigation">
+      {links.map((link) => (
+        <a
+          class:list={["hero-mobile-link", { "is-active": link.key === active }]}
+          href={link.href}
+          aria-current={link.key === active ? "page" : undefined}
+        >{link.label}</a>
+      ))}
+      <a class="mobile-menu-cta" href="/contact">Start Enquiry</a>
+    </nav>
+  </div>
+</nav>

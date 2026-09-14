@@ -1,0 +1,49 @@
+---
+const faqs = [
+  {
+    question: "Are you a lender or a fund?",
+    answer:
+      "No. Zentria originates and structures transactions, then connects you with the right funding partners from our network. Because we're independent, we're never tied to a single source of capital.",
+  },
+  {
+    question: "Who do you work with?",
+    answer:
+      "On one side, established businesses and project sponsors seeking strategic capital. On the other, private investors, family offices and institutional providers looking for well-structured opportunities.",
+  },
+  {
+    question: "How do you protect confidentiality?",
+    answer:
+      "Discretion is the default. Every conversation is treated in strict confidence, and your information is only ever shared with your consent.",
+  },
+  {
+    question: "How do you charge?",
+    answer:
+      "We agree clear, transparent terms before any work begins, so you always understand how we're engaged before committing to anything.",
+  },
+];
+---
+
+<section id="faq" class="section-block bg-white" data-reveal-section>
+  <div class="site-container">
+    <div class="faq-layout">
+      <div class="section-heading faq-intro" data-reveal-item>
+        <h2 class="text-5xl font-bold tracking-normal text-navy">Common Enquiries</h2>
+        <p class="mt-5 text-base font-light leading-7 text-slate-600">
+          A few things businesses and funding partners often ask. If your question isn't here,
+          <a class="audience-inline-link font-medium text-orange-dark" href="/contact">contact our team.</a>
+        </p>
+      </div>
+
+      <div class="faq-list" data-reveal-group>
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary>{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

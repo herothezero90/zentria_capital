@@ -1,0 +1,35 @@
+---
+// Footer bar inside the .site-closing shell. On pages without the closing CTA
+// (contact, insights) the copyright moves under the meta line and the third
+// grid column stays as an empty spacer.
+// Props: variant — "home" (copyright in third column) | "plain" (copyright under meta)
+const { variant = "home" } = Astro.props;
+const year = 2026;
+---
+
+<footer class="site-closing__footer">
+  <div class="site-container site-footer-bar">
+    <div class="site-footer-brand">
+      <img class="site-footer-logo" src="/images/zentria-logo-white-cropped.png" alt="Zentria" width="668"
+        height="388" />
+    </div>
+    {variant === "home" ? (
+      <>
+        <div class="site-footer-meta">
+          <p class="text-white/70">Independent capital advisory and investment origination.</p>
+        </div>
+        <div class="site-footer-nav">
+          <p class="site-footer-copy">&copy; {year} Zentria Capital. All rights reserved.</p>
+        </div>
+      </>
+    ) : (
+      <>
+        <div class="site-footer-meta">
+          <p class="text-white/70">Independent capital advisory and investment origination.</p>
+          <p class="site-footer-copy">&copy; {year} Zentria Capital. All rights reserved.</p>
+        </div>
+        <div class="site-footer-nav" aria-hidden="true"></div>
+      </>
+    )}
+  </div>
+</footer>

@@ -1,0 +1,37 @@
+---
+// Infinite logo marquee. Two identical groups scroll -50% for a seamless loop;
+// each group lists the logos twice. Only the first pass of the visible group
+// carries real alt text — every other copy is decorative.
+// Props: wrapperClass — "hero-marquee" (hero 1 / full width) or
+//        "hero2-marquee" (inside the hero 2 media panel)
+const { wrapperClass = "hero-marquee" } = Astro.props;
+
+const brands = [
+  { src: "/images/brands/transistor-white.svg", alt: "Transistor" },
+  { src: "/images/brands/reform-white.svg", alt: "Reform" },
+  { src: "/images/brands/tuple-white.svg", alt: "Tuple" },
+  { src: "/images/brands/savvycal-white.svg", alt: "SavvyCal" },
+  { src: "/images/brands/statamic-white.svg", alt: "Statamic" },
+];
+---
+
+<div class={wrapperClass} aria-label="Trusted by leading companies">
+  <div class="hero-marquee__track">
+    <div class="hero-marquee__group">
+      {brands.map((brand) => (
+        <img src={brand.src} alt={brand.alt} width="158" height="48" />
+      ))}
+      {brands.map((brand) => (
+        <img src={brand.src} alt="" width="158" height="48" />
+      ))}
+    </div>
+    <div class="hero-marquee__group" aria-hidden="true">
+      {brands.map((brand) => (
+        <img src={brand.src} alt="" width="158" height="48" />
+      ))}
+      {brands.map((brand) => (
+        <img src={brand.src} alt="" width="158" height="48" />
+      ))}
+    </div>
+  </div>
+</div>

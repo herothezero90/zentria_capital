@@ -1,0 +1,60 @@
+---
+import Header from "./Header.astro";
+import BrandMarquee from "./BrandMarquee.astro";
+
+// Hero concept 1: navy full-viewport hero with the three-bar skyline chart.
+// The 1/2 preview switcher at the end is a draft-review tool for the client;
+// js/main.js moves it into whichever hero is active. Remove once a concept is chosen.
+---
+
+<section class="hero-section" data-hero>
+  <Header theme="dark" active="home" menuId="site-menu" />
+
+  <div class="hero-content">
+    <div class="site-container">
+      <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div class="hero-copy">
+          <p class="hero-wordmark hero-wordmark--hero1">Zentria</p>
+          <h1 class="hero-title mt-5 font-bold text-orange-light">
+            CAPITAL,<br />CONNECTED.
+          </h1>
+          <p class="mt-6 max-w-md text-base font-light leading-8 text-white sm:text-lg">
+            We match established businesses and major projects with the right funding partners, through tailored
+            debt, equity and joint venture solutions.
+          </p>
+          <div class="mt-9">
+            <a class="btn-primary btn-pill px-8 py-3" href="/contact">Start Enquiry</a>
+          </div>
+        </div>
+
+        <div class="hero-chart" data-hero-chart aria-hidden="true">
+          <div class="hero-bar hero-bar--left" data-hero-bar style="--bar-target: 92%">
+            <div class="hero-bar__fill" data-hero-bar-fill>
+              <span class="hero-bar__img"></span>
+            </div>
+          </div>
+          <div class="hero-bar hero-bar--center" data-hero-bar style="--bar-target: 96%">
+            <div class="hero-bar__fill" data-hero-bar-fill>
+              <span class="hero-bar__img"></span>
+            </div>
+          </div>
+          <div class="hero-bar hero-bar--right" data-hero-bar style="--bar-target: 100%">
+            <div class="hero-bar__fill" data-hero-bar-fill>
+              <span class="hero-bar__img"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <BrandMarquee />
+
+  <div class="hero-preview-switch" data-hero-switch role="group" aria-label="Homepage hero preview">
+    <span class="hero-preview-switch__label">HERO</span>
+    <button type="button" class="hero-preview-switch__btn is-active" data-hero-switch-btn="1" aria-pressed="true"
+      title="Hero concept 1">1</button>
+    <button type="button" class="hero-preview-switch__btn" data-hero-switch-btn="2" aria-pressed="false"
+      title="Hero concept 2">2</button>
+  </div>
+</section>

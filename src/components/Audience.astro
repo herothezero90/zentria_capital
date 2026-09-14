@@ -1,0 +1,51 @@
+---
+const audiences = [
+  {
+    icon: "/images/iconoir/business-building.svg",
+    title: "Businesses & project sponsors",
+    copy: "Established companies and large-scale projects seeking strategic capital for growth, acquisitions, development or expansion.",
+  },
+  {
+    icon: "/images/iconoir/funding-partner.svg",
+    title: "Funding partners",
+    copy: "Private investors, family offices and institutional providers looking for quality, well-structured opportunities.",
+  },
+  {
+    icon: "/images/iconoir/adviser-handshake.svg",
+    title: "Introducers & advisers",
+    copy: "Brokers and advisers who refer clients and partner with us on deals across our network.",
+  },
+];
+---
+
+<section class="section-block bg-white audience-section" data-reveal-section>
+  <div class="site-container">
+    <div class="audience-layout">
+      <div class="section-heading audience-copy" data-reveal-item>
+        <h2 class="text-5xl font-bold tracking-normal text-navy">Who we work with</h2>
+        <p class="mt-5 text-base font-light leading-7 text-slate-600">
+          We connect a select network of established businesses and sophisticated capital providers, aligning the
+          right partners around each opportunity.
+        </p>
+        <p class="mt-4 text-base font-light leading-7 text-slate-600">By understanding each client's objectives and
+          funding requirements, we align the right partners around
+          every opportunity, structured for long-term value, not just a single transaction.</p>
+        <p class="mt-6 text-base font-light leading-7 text-slate-600">Not sure where you fit?
+          <a class="audience-inline-link font-medium text-orange-dark" href="/contact">Start Enquiry</a>
+        </p>
+      </div>
+
+      <div class="audience-cards" data-reveal-group>
+        {audiences.map((audience) => (
+          <article class="content-panel audience-card">
+            <div class="iconoir-badge" aria-hidden="true">
+              <img class="iconoir-icon" src={audience.icon} alt="" width="24" height="24" />
+            </div>
+            <h3 class="mt-5 text-lg font-semibold text-navy">{audience.title}</h3>
+            <p class="mt-3 text-sm font-light leading-6 text-slate-600">{audience.copy}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

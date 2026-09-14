@@ -1,0 +1,64 @@
+---
+import { getCollection, render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("insights");
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const dateFormat = new Intl.DateTimeFormat("en-GB", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+---
+
+<Base
+  title={post.data.seoTitle ?? `${post.data.title} | Zentria Capital`}
+  description={post.data.metaDescription ?? post.data.summary}
+  bodyClass="page-contact bg-white font-sans text-navy antialiased"
+  themeColor="#F8FAFC"
+>
+  <header class="page-header page-header--light sticky top-0 z-40">
+    <Header theme="light" active="insights" navClass="page-site-header" />
+  </header>
+
+  <main>
+    <article class="section-block">
+      <div class="site-container">
+        <div class="mx-auto max-w-3xl">
+          <p class="text-xs font-medium uppercase tracking-wide text-orange-dark">
+            {dateFormat.format(post.data.date)}
+          </p>
+          <h1 class="mt-4 text-4xl font-bold tracking-normal text-navy sm:text-5xl">{post.data.title}</h1>
+          <p class="mt-6 text-lg font-light leading-8 text-slate-700">{post.data.summary}</p>
+
+          {post.data.image && (
+            <img class="insight-hero-image mt-10" src={post.data.image} alt="" />
+          )}
+
+          <div class="insight-body mt-10">
+            <Content />
+          </div>
+
+          <div class="mt-12 border-t border-slate-200 pt-8">
+            <a class="text-sm font-semibold text-orange-dark" href="/insights">← All insights</a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <div class="site-closing bg-navy text-white">
+    <Footer variant="plain" />
+  </div>
+</Base>

@@ -6,9 +6,6 @@
   const heroBarFills = heroBars
     .map((bar) => bar.querySelector("[data-hero-bar-fill]"))
     .filter(Boolean);
-  const heroImage = document.querySelector("[data-hero-image]");
-  const heroArcPaths = Array.from(document.querySelectorAll("[data-hero-arc-path]"));
-  const heroArcTerminal = document.querySelector("[data-hero-arc-terminal]");
   const heroCopy = document.querySelector(".hero-copy");
   const heroContentItems = heroCopy ? Array.from(heroCopy.children) : [];
   const hero2 = document.querySelector("[data-hero2]");
@@ -21,7 +18,7 @@
   const hero2CopyItems = hero2 ? Array.from(hero2.querySelectorAll(".hero2-panel--copy > :not(.hero2-brand-arc)")) : [];
   const revealSections = Array.from(document.querySelectorAll("[data-reveal-section]"));
   const interactiveElements = Array.from(
-    document.querySelectorAll(".btn-primary, .btn-secondary, .cta-card, .radio-card")
+    document.querySelectorAll(".btn-primary, .btn-secondary, .radio-card")
   );
   const motion = {
     quick: 160,
@@ -53,20 +50,25 @@
       document.body.classList.toggle("nav-open", open);
     };
 
+    const pairs = [];
+
     toggles.forEach((toggle) => {
       const scope = toggle.closest("nav") || document;
       const menu = scope.querySelector("[data-nav-menu]");
       if (!menu) return;
 
+      pairs.push({ toggle, menu });
       toggle.addEventListener("click", () => {
         setOpen(toggle, menu, toggle.getAttribute("aria-expanded") !== "true");
       });
       menu.querySelectorAll("a, [data-nav-close]").forEach((control) => {
         control.addEventListener("click", () => setOpen(toggle, menu, false));
       });
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") setOpen(toggle, menu, false);
-      });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      pairs.forEach(({ toggle, menu }) => setOpen(toggle, menu, false));
     });
   }
 
@@ -121,88 +123,12 @@
     }
   }
 
-  function animateHeroReveal() {
-    if (!hero) return;
-
-    if (!canAnimate()) {
-      if (heroImage) heroImage.style.clipPath = "inset(0 0 0 0)";
-      heroArcPaths.forEach((path) => {
-        path.style.strokeDashoffset = "0";
-      });
-      finishHeroReveal();
-      return;
-    }
-
-    heroArcPaths.forEach((path) => {
-      path.style.strokeDashoffset = String(path.getTotalLength());
-    });
-
-    if (heroArcTerminal) {
-      window.anime.set(heroArcTerminal, { opacity: 0, scale: 0.55 });
-    }
-
-    if (heroImage) {
-      heroImage.style.clipPath = "inset(100% 0 0 0)";
-    }
-
-    window.anime.set(heroContentItems, { opacity: 0, translateY: 20 });
-    finishHeroReveal();
-
-    const timeline = window.anime.timeline({ easing: motion.easeOut });
-
-    timeline.add({
-      targets: heroArcPaths,
-      strokeDashoffset: 0,
-      duration: 1200,
-      delay: window.anime.stagger(80),
-      easing: motion.easeOut,
-    });
-
-    if (heroArcTerminal) {
-      timeline.add(
-        {
-          targets: heroArcTerminal,
-          opacity: [0, 1],
-          scale: [0.55, 1],
-          duration: 420,
-          easing: motion.easeOut,
-        },
-        880
-      );
-    }
-
-    if (heroImage) {
-      timeline.add(
-        {
-          targets: heroImage,
-          clipPath: ["inset(100% 0 0 0)", "inset(0 0 0 0)"],
-          duration: 800,
-          easing: motion.easeOut,
-        },
-        200
-      );
-    }
-
-    timeline.add(
-      {
-        targets: heroContentItems,
-        opacity: [0, 1],
-        translateY: [20, 0],
-        duration: 640,
-        delay: window.anime.stagger(90),
-      },
-      100
-    );
-  }
-
   function bindHero() {
     if (!hero) return;
 
     window.requestAnimationFrame(() => {
       if (heroBars.length > 0) {
         revealHeroWithAnime();
-      } else if (heroArcPaths.length > 0 || heroImage) {
-        animateHeroReveal();
       } else {
         finishHeroReveal();
       }

@@ -1,83 +1,17 @@
-<!doctype html>
-<html lang="en">
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact | Zentria Capital</title>
-  <meta name="description"
-    content="Get in touch with Zentria Capital. Tell us about your funding requirement or mandate." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=K2D:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap"
-    rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            navy: "#2D3747",
-            white: "#FFFFFF",
-            "orange-light": "#FF9D44",
-            "orange-dark": "#D37B13",
-          },
-          fontFamily: {
-            sans: ["Roboto", "sans-serif"],
-            heading: ["K2D", "sans-serif"],
-          },
-        },
-      },
-    };
-  </script>
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png" />
-  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-  <meta name="theme-color" content="#F8FAFC" />
-  <link rel="stylesheet" href="css/style.css?v=1" />
-</head>
-
-<body class="page-contact bg-white font-sans text-navy antialiased">
-  <!-- nav -->
-  <header class="site-header page-header page-header--light sticky top-0 z-40">
-    <nav class="hero-site-header page-site-header" aria-label="Main navigation">
-      <a href="index.html" class="site-logo-link" aria-label="Zentria Capital home">
-        <img src="images/zentria-logo-cropped.png" alt="Zentria Capital" class="site-logo site-logo--full" width="668"
-          height="388" />
-        <img src="images/zentria-mark.png" alt="" class="site-logo site-logo--mark" width="512" height="512" />
-      </a>
-
-      <div class="hero-nav-pill hidden md:flex">
-        <a class="hero-nav-link" href="index.html">Home</a>
-        <a class="hero-nav-link" href="index.html#about">About</a>
-        <a class="hero-nav-link" href="index.html#faq">FAQ</a>
-        <a class="hero-nav-link is-active" href="contact.html" aria-current="page">Contact</a>
-      </div>
-
-      <a class="btn-primary btn-pill hidden md:inline-flex" href="contact.html">Start Enquiry</a>
-
-      <button class="hero-nav-toggle md:hidden" type="button" data-nav-toggle aria-controls="site-menu"
-        aria-expanded="false">
-        <span class="sr-only">Open navigation</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
-          stroke-linejoin="round" aria-hidden="true">
-          <path d="M3 6h18" />
-          <path d="M3 12h13" />
-          <path d="M3 18h18" />
-        </svg>
-      </button>
-
-      <div id="site-menu" class="hero-mobile-menu hidden" data-nav-menu>
-        <nav class="mobile-menu-links" aria-label="Mobile navigation">
-          <a class="hero-mobile-link" href="index.html">Home</a>
-          <a class="hero-mobile-link" href="index.html#about">About</a>
-          <a class="hero-mobile-link" href="index.html#faq">FAQ</a>
-          <a class="hero-mobile-link is-active" href="contact.html" aria-current="page">Contact</a>
-          <a class="mobile-menu-cta" href="contact.html">Start Enquiry</a>
-        </nav>
-      </div>
-    </nav>
+<Base
+  title="Contact | Zentria Capital"
+  description="Get in touch with Zentria Capital. Tell us about your funding requirement or mandate."
+  bodyClass="page-contact bg-white font-sans text-navy antialiased"
+  themeColor="#F8FAFC"
+>
+  <header class="page-header page-header--light sticky top-0 z-40">
+    <Header theme="light" active="contact" navClass="page-site-header" />
   </header>
 
   <main>
@@ -304,7 +238,7 @@
                   day.
                 </p>
                 <div class="mt-8">
-                  <a class="btn-secondary" href="index.html">Back to homepage</a>
+                  <a class="btn-secondary" href="/">Back to homepage</a>
                 </div>
               </div>
             </div>
@@ -320,7 +254,7 @@
             <div class="contact-points">
               <div class="contact-point">
                 <span class="contact-point__icon" aria-hidden="true">
-                  <img src="images/iconoir/check-circle.svg" alt="" width="24" height="24" />
+                  <img src="/images/iconoir/check-circle.svg" alt="" width="24" height="24" />
                 </span>
                 <div>
                   <h3>Discreet by default</h3>
@@ -329,7 +263,7 @@
               </div>
               <div class="contact-point">
                 <span class="contact-point__icon" aria-hidden="true">
-                  <img src="images/iconoir/message-text.svg" alt="" width="24" height="24" />
+                  <img src="/images/iconoir/message-text.svg" alt="" width="24" height="24" />
                 </span>
                 <div>
                   <h3>A personal reply</h3>
@@ -338,7 +272,7 @@
               </div>
               <div class="contact-point">
                 <span class="contact-point__icon" aria-hidden="true">
-                  <img src="images/iconoir/adviser-handshake.svg" alt="" width="24" height="24" />
+                  <img src="/images/iconoir/adviser-handshake.svg" alt="" width="24" height="24" />
                 </span>
                 <div>
                   <h3>No obligation</h3>
@@ -354,23 +288,8 @@
 
   <!-- footer -->
   <div class="site-closing bg-navy text-white">
-    <footer class="site-closing__footer">
-      <div class="site-container site-footer-bar">
-        <div class="site-footer-brand">
-          <img class="site-footer-logo" src="images/zentria-logo-white-cropped.png" alt="Zentria" width="668"
-            height="388" />
-        </div>
-        <div class="site-footer-meta">
-          <p class="text-white/70">Independent capital advisory and investment origination.</p>
-          <p class="site-footer-copy">&copy; 2026 Zentria Capital. All rights reserved.</p>
-        </div>
-        <div class="site-footer-nav" aria-hidden="true"></div>
-      </div>
-    </footer>
+    <Footer variant="plain" />
   </div>
 
-  <script src="js/main.js?v=6"></script>
-  <script src="js/form.js?v=1"></script>
-</body>
-
-</html>
+  <script is:inline src="/js/form.js" slot="scripts"></script>
+</Base>
