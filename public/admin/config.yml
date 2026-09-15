@@ -1,0 +1,51 @@
+# Decap CMS configuration.
+# Field names must stay in sync with src/content.config.ts (Astro content collections).
+
+# Production backend (Netlify): enable Netlify Identity + Git Gateway on the
+# Netlify site, then this backend works as-is. Until then, local editing works
+# through `npm run cms` (decap-server) thanks to local_backend below.
+backend:
+  name: git-gateway
+  branch: astro-migration # TODO: switch to master when the branch merges
+
+# Local editing without any Netlify setup:
+#   terminal 1: npm run dev
+#   terminal 2: npm run cms
+#   open http://localhost:4321/admin/
+local_backend: true
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: insights
+    label: Insights
+    label_singular: Insight
+    folder: src/content/insights
+    create: true
+    slug: "{{slug}}"
+    sortable_fields: [date, title]
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Publish date, name: date, widget: datetime, format: "YYYY-MM-DD", time_format: false }
+      - { label: Summary, name: summary, widget: text, hint: "Shown on the Insights overview card and used as the default meta description." }
+      - { label: Image, name: image, widget: image, required: false }
+      - { label: SEO title, name: seoTitle, widget: string, required: false, hint: "Overrides the browser/tab title. Defaults to the post title." }
+      - { label: Meta description, name: metaDescription, widget: text, required: false, hint: "Overrides the summary for search engines." }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: mandates
+    label: Selected investments
+    label_singular: Investment
+    folder: src/content/mandates
+    create: true
+    extension: yaml
+    format: yaml
+    identifier_field: type
+    summary: "{{amount}} — {{type}}"
+    sortable_fields: [order]
+    fields:
+      - { label: Amount, name: amount, widget: string, hint: "e.g. $12M" }
+      - { label: Project, name: type, widget: string, hint: "e.g. Elmstead Residences" }
+      - { label: Sector, name: sector, widget: string, hint: "e.g. UK residential development" }
+      - { label: Order, name: order, widget: number, value_type: int, hint: "Position in the marquee, lowest first." }

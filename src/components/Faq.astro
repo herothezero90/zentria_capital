@@ -1,0 +1,49 @@
+---
+const faqs = [
+  {
+    question: "What does TGM Invest invest in?",
+    answer:
+      "We focus on established businesses and selected real estate projects. We invest directly and may work alongside investment partners where the opportunity and objectives align.",
+  },
+  {
+    question: "Who do you work with?",
+    answer:
+      "We work with business owners, management teams and experienced property developers, as well as investors and advisers who share our investment focus.",
+  },
+  {
+    question: "How do you protect confidentiality?",
+    answer:
+      "Discretion is the default. Every conversation is treated in strict confidence, and your information is only ever shared with your consent.",
+  },
+  {
+    question: "What happens after the first conversation?",
+    answer:
+      "If there is a potential fit, we agree on the information needed to assess the opportunity. Any investment is subject to due diligence and mutually agreed terms.",
+  },
+];
+---
+
+<section id="faq" class="section-block bg-white" data-reveal-section>
+  <div class="site-container">
+    <div class="faq-layout">
+      <div class="section-heading faq-intro" data-reveal-item>
+        <h2 class="text-5xl font-bold tracking-normal text-navy">Common Enquiries</h2>
+        <p class="mt-5 text-base font-light leading-7 text-slate-600">
+          A few things business owners and investment partners often ask. If your question isn't here,
+          <a class="audience-inline-link font-medium text-orange-dark" href="/contact">contact our team.</a>
+        </p>
+      </div>
+
+      <div class="faq-list" data-reveal-group>
+        {faqs.map((faq) => (
+          <details class="faq-item">
+            <summary>{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

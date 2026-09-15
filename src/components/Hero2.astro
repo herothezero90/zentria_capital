@@ -1,0 +1,63 @@
+---
+import Header from "./Header.astro";
+import BrandMarquee from "./BrandMarquee.astro";
+
+// Hero concept 2: light split hero — copy panel with rotating brand arc,
+// media panel with London photo and the brand marquee pinned to its bottom.
+// Hidden by default; js/main.js toggles it via the hero preview switcher.
+---
+
+<section class="hero2-page" data-hero2 hidden>
+  <header class="page-header page-header--light">
+    <Header theme="light" active="home" menuId="site-menu-2" navClass="hero2-site-header page-site-header" />
+  </header>
+
+  <div class="hero2-split-wrap" data-hero2-scene>
+    <div class="site-container hero2-split">
+      <div class="hero2-panel hero2-panel--copy" data-hero2-copy-panel>
+        <svg class="hero2-brand-arc" viewBox="0 0 640 640" aria-hidden="true" data-hero2-arc>
+          <defs>
+            <linearGradient id="hero2-arc-orange" x1="12%" y1="82%" x2="88%" y2="18%">
+              <stop offset="0%" stop-color="#B9CDBF" />
+              <stop offset="100%" stop-color="#3E725B" />
+            </linearGradient>
+          </defs>
+          <g class="hero2-arc-orbit" data-hero2-arc-orbit>
+            <circle class="hero2-arc-ring hero2-arc-ring--navy" cx="320" cy="320" r="246" fill="none"
+              stroke="#94AB9C" stroke-width="3" stroke-linecap="round" stroke-dasharray="34 20 8 24 46 18 14 28" />
+            <circle class="hero2-arc-ring hero2-arc-ring--orange" cx="320" cy="320" r="214" fill="none"
+              stroke="url(#hero2-arc-orange)" stroke-width="5" stroke-linecap="round"
+              stroke-dasharray="76 260 128 340" stroke-dashoffset="-42" />
+            <circle class="hero2-arc-ring hero2-arc-ring--white" cx="320" cy="320" r="181" fill="none"
+              stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="20 22 46 28 10 24 58 30"
+              stroke-dashoffset="36" />
+            <circle class="hero2-arc-ring hero2-arc-ring--orange-soft" cx="320" cy="320" r="152" fill="none"
+              stroke="url(#hero2-arc-orange)" stroke-width="2.25" stroke-linecap="round"
+              stroke-dasharray="84 360 18 220" stroke-dashoffset="120" />
+          </g>
+        </svg>
+
+        <p class="hero-wordmark hero-wordmark--hero2">TGM Invest</p>
+        <h1 class="hero-title font-heading font-extrabold tracking-tight text-white">
+          CAPITAL<br />COMMITTED
+        </h1>
+        <p class="hero2-lead mt-6 max-w-md font-light text-white/75">
+          We invest in established businesses and selected real estate projects, working closely with
+          our partners to support their next stage of growth.
+        </p>
+        <div class="mt-9">
+          <a class="btn-primary btn-pill px-8 py-3" href="/contact">Get in touch</a>
+        </div>
+      </div>
+
+      <div class="hero2-panel hero2-panel--media" data-hero2-image data-hero2-media-panel>
+        <img src="/images/hero-city.webp" alt="" class="h-full w-full object-cover" width="1800"
+          height="2700" loading="lazy" />
+        <span class="hero2-media-scrim" aria-hidden="true"></span>
+        <BrandMarquee wrapperClass="hero2-marquee" />
+      </div>
+
+      <span class="hero2-split-seam" data-hero2-seam aria-hidden="true"></span>
+    </div>
+  </div>
+</section>

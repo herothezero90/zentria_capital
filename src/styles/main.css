@@ -1,0 +1,12 @@
+/*
+ * Import order matters and replicates how the site behaved with the Tailwind
+ * Play CDN: theme + preflight first, then our custom stylesheet, then the
+ * utilities UNLAYERED and LAST — so a utility class in the markup (e.g.
+ * md:hidden) can override a custom component rule of equal specificity, while
+ * higher-specificity custom rules (e.g. `.hero-copy .mt-9`) still win.
+ * Do not wrap utilities.css in layer() — that would flip the cascade.
+ */
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "./global.css";
+@import "tailwindcss/utilities.css";

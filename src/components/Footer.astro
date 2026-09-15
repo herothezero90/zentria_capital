@@ -1,0 +1,35 @@
+---
+// Footer bar inside the .site-closing shell. On pages without the closing CTA
+// (contact, insights) the copyright moves under the meta line and the third
+// grid column stays as an empty spacer.
+// Props: variant — "home" (copyright in third column) | "plain" (copyright under meta)
+const { variant = "home" } = Astro.props;
+const year = 2026;
+---
+
+<footer class="site-closing__footer">
+  <div class="site-container site-footer-bar">
+    <div class="site-footer-brand">
+      <img class="site-footer-logo" src="/images/tgm-logo-white.svg" alt="TGM Invest" width="156"
+        height="76" />
+    </div>
+    {variant === "home" ? (
+      <>
+        <div class="site-footer-meta">
+          <p class="text-white/70">Business and real estate investment. Fictional portfolio concept.</p>
+        </div>
+        <div class="site-footer-nav">
+          <p class="site-footer-copy">&copy; {year} TGM Invest. All rights reserved.</p>
+        </div>
+      </>
+    ) : (
+      <>
+        <div class="site-footer-meta">
+          <p class="text-white/70">Business and real estate investment. Fictional portfolio concept.</p>
+          <p class="site-footer-copy">&copy; {year} TGM Invest. All rights reserved.</p>
+        </div>
+        <div class="site-footer-nav" aria-hidden="true"></div>
+      </>
+    )}
+  </div>
+</footer>
