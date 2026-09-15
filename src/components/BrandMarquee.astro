@@ -7,15 +7,15 @@
 const { wrapperClass = "hero-marquee" } = Astro.props;
 
 const brands = [
-  { src: "/images/brands/transistor-white.svg", alt: "Transistor" },
-  { src: "/images/brands/reform-white.svg", alt: "Reform" },
-  { src: "/images/brands/tuple-white.svg", alt: "Tuple" },
-  { src: "/images/brands/savvycal-white.svg", alt: "SavvyCal" },
-  { src: "/images/brands/statamic-white.svg", alt: "Statamic" },
+  { src: "/images/brands/tgm-elmstead.svg", alt: "Elmstead — fictional company" },
+  { src: "/images/brands/tgm-northfield.svg", alt: "Northfield — fictional company" },
+  { src: "/images/brands/tgm-rowan.svg", alt: "Rowan — fictional company" },
+  { src: "/images/brands/tgm-alder.svg", alt: "Alder — fictional company" },
+  { src: "/images/brands/tgm-westmere.svg", alt: "Westmere — fictional company" },
 ];
 ---
 
-<div class={wrapperClass} aria-label="Trusted by leading companies">
+<div class={wrapperClass} aria-label="Illustrative portfolio companies — fictional examples">
   <div class="hero-marquee__track">
     <div class="hero-marquee__group">
       {brands.map((brand) => (

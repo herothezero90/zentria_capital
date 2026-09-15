@@ -10,8 +10,8 @@
   };
 
   const submitTextBySegment = {
-    "seeking-capital": "Request an introduction",
-    "funding-partner": "Join our network",
+    "seeking-capital": "Discuss your opportunity",
+    "funding-partner": "Discuss a partnership",
     introducer: "Submit your introduction",
   };
 

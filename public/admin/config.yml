@@ -35,8 +35,8 @@ collections:
       - { label: Body, name: body, widget: markdown }
 
   - name: mandates
-    label: Selected mandates
-    label_singular: Mandate
+    label: Selected investments
+    label_singular: Investment
     folder: src/content/mandates
     create: true
     extension: yaml
@@ -45,7 +45,7 @@ collections:
     summary: "{{amount}} — {{type}}"
     sortable_fields: [order]
     fields:
-      - { label: Amount, name: amount, widget: string, hint: "e.g. £12M" }
-      - { label: Type, name: type, widget: string, hint: "e.g. Senior development facility" }
+      - { label: Amount, name: amount, widget: string, hint: "e.g. $12M" }
+      - { label: Project, name: type, widget: string, hint: "e.g. Elmstead Residences" }
       - { label: Sector, name: sector, widget: string, hint: "e.g. UK residential development" }
       - { label: Order, name: order, widget: number, value_type: int, hint: "Position in the marquee, lowest first." }

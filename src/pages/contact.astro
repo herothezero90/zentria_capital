@@ -5,10 +5,10 @@ import Footer from "../components/Footer.astro";
 ---
 
 <Base
-  title="Contact | Zentria Capital"
-  description="Get in touch with Zentria Capital. Tell us about your funding requirement or mandate."
+  title="Contact | TGM Invest"
+  description="Get in touch with TGM Invest. Tell us about your business, real estate project or investment partnership."
   bodyClass="page-contact bg-white font-sans text-navy antialiased"
-  themeColor="#F8FAFC"
+  themeColor="#F5F6F2"
 >
   <header class="page-header page-header--light sticky top-0 z-40">
     <Header theme="light" active="contact" navClass="page-site-header" />
@@ -19,6 +19,44 @@ import Footer from "../components/Footer.astro";
     <section class="section-block">
       <div class="site-container">
         <div class="contact-layout">
+          <aside class="contact-aside">
+            <h1 class="text-4xl font-bold tracking-normal text-navy sm:text-5xl">Let's talk.</h1>
+            <p class="mt-6 text-lg font-light leading-8 text-slate-700">
+              Tell us a little about what you're looking for, and we'll come back to you personally, usually
+              within one business day.
+            </p>
+
+            <div class="contact-points">
+              <div class="contact-point">
+                <span class="contact-point__icon" aria-hidden="true">
+                  <img src="/images/iconoir/check-circle.svg" alt="" width="24" height="24" />
+                </span>
+                <div>
+                  <h3>Discreet by default</h3>
+                  <p>Every enquiry is handled in strict confidence.</p>
+                </div>
+              </div>
+              <div class="contact-point">
+                <span class="contact-point__icon" aria-hidden="true">
+                  <img src="/images/iconoir/message-text.svg" alt="" width="24" height="24" />
+                </span>
+                <div>
+                  <h3>A personal reply</h3>
+                  <p>You'll hear back from us directly, usually within one business day.</p>
+                </div>
+              </div>
+              <div class="contact-point">
+                <span class="contact-point__icon" aria-hidden="true">
+                  <img src="/images/iconoir/adviser-handshake.svg" alt="" width="24" height="24" />
+                </span>
+                <div>
+                  <h3>No obligation</h3>
+                  <p>A conversation to understand your needs, not a commitment.</p>
+                </div>
+              </div>
+            </div>
+          </aside>
+
           <!-- form -->
           <div class="contact-form-col">
 
@@ -37,7 +75,7 @@ import Footer from "../components/Footer.astro";
                 <!-- step 1 -->
                 <section class="form-step" data-step="1">
                   <fieldset>
-                    <legend class="text-2xl font-semibold text-navy">What brings you to Zentria?</legend>
+                    <legend class="text-2xl font-semibold text-navy">What brings you to TGM Invest?</legend>
 
                     <div class="mt-8 grid gap-4 md:grid-cols-3" data-segment-options>
                       <label class="radio-card">
@@ -49,9 +87,9 @@ import Footer from "../components/Footer.astro";
 
                       <label class="radio-card">
                         <input class="sr-only" type="radio" name="segment" value="funding-partner" />
-                        <span class="block text-base font-semibold text-navy">I'm a funding partner</span>
+                        <span class="block text-base font-semibold text-navy">I'm an investment partner</span>
                         <span class="mt-2 block text-sm font-light leading-6 text-slate-600">I provide capital and want
-                          quality opportunities.</span>
+                          to explore investing together.</span>
                       </label>
 
                       <label class="radio-card">
@@ -75,8 +113,8 @@ import Footer from "../components/Footer.astro";
                           <span>Type of capital needed</span>
                           <select name="capitalType">
                             <option value="">Select an option</option>
-                            <option value="debt">Debt</option>
-                            <option value="equity">Equity</option>
+                            <option value="growth-equity">Growth equity</option>
+                            <option value="acquisition">Business acquisition</option>
                             <option value="joint-venture">Joint venture</option>
                             <option value="not-sure">Not sure yet</option>
                           </select>
@@ -86,10 +124,10 @@ import Footer from "../components/Footer.astro";
                           <span>Approximate amount sought</span>
                           <select name="amountSought">
                             <option value="">Select an option</option>
-                            <option value="under-1m">Under £1M</option>
-                            <option value="1m-5m">£1M-£5M</option>
-                            <option value="5m-20m">£5M-£20M</option>
-                            <option value="20m-plus">£20M+</option>
+                            <option value="under-1m">Under $1M</option>
+                            <option value="1m-5m">$1M-$5M</option>
+                            <option value="5m-20m">$5M-$20M</option>
+                            <option value="20m-plus">$20M+</option>
                           </select>
                         </label>
                       </div>
@@ -113,8 +151,8 @@ import Footer from "../components/Footer.astro";
                           <span>Capital you provide</span>
                           <select name="capitalProvided">
                             <option value="">Select an option</option>
-                            <option value="debt">Debt</option>
-                            <option value="equity">Equity</option>
+                            <option value="growth-equity">Growth equity</option>
+                            <option value="acquisition">Business acquisition</option>
                             <option value="joint-venture">Joint venture</option>
                           </select>
                         </label>
@@ -123,10 +161,10 @@ import Footer from "../components/Footer.astro";
                           <span>Typical deal size</span>
                           <select name="dealSize">
                             <option value="">Select an option</option>
-                            <option value="under-1m">Under £1M</option>
-                            <option value="1m-5m">£1M-£5M</option>
-                            <option value="5m-20m">£5M-£20M</option>
-                            <option value="20m-plus">£20M+</option>
+                            <option value="under-1m">Under $1M</option>
+                            <option value="1m-5m">$1M-$5M</option>
+                            <option value="5m-20m">$5M-$20M</option>
+                            <option value="20m-plus">$20M+</option>
                           </select>
                         </label>
                       </div>
@@ -148,10 +186,10 @@ import Footer from "../components/Footer.astro";
                           <span>Capital they're seeking</span>
                           <select name="clientCapitalSought">
                             <option value="">Select an option</option>
-                            <option value="under-1m">Under £1M</option>
-                            <option value="1m-5m">£1M-£5M</option>
-                            <option value="5m-20m">£5M-£20M</option>
-                            <option value="20m-plus">£20M+</option>
+                            <option value="under-1m">Under $1M</option>
+                            <option value="1m-5m">$1M-$5M</option>
+                            <option value="5m-20m">$5M-$20M</option>
+                            <option value="20m-plus">$20M+</option>
                           </select>
                         </label>
 
@@ -209,9 +247,7 @@ import Footer from "../components/Footer.astro";
 
                       <label class="form-consent">
                         <input type="checkbox" name="consent" />
-                        <span>I agree to Zentria Capital handling my details in line with its
-                          <span class="form-consent__link">privacy policy</span> in order to respond to my
-                          enquiry.</span>
+                        <span>I understand this is a demonstration form and my enquiry will not be sent.</span>
                       </label>
                     </div>
                   </fieldset>
@@ -227,15 +263,13 @@ import Footer from "../components/Footer.astro";
                   </div>
                 </div>
 
-                <p class="form-reassurance">Confidential · No obligation · A personal reply, usually within one business
-                  day.</p>
+                <p class="form-reassurance">Portfolio demo · No enquiry is sent or stored. Please use sample details.</p>
               </form>
 
               <div id="thank-you-message" class="hidden py-12 text-center" tabindex="-1">
-                <p class="eyebrow">Thank you</p>
+                <p class="eyebrow">Demo complete</p>
                 <p class="mx-auto mt-4 max-w-xl text-lg font-light leading-8 text-slate-700">
-                  Thank you. We've received your enquiry and will be in touch personally, usually within one business
-                  day.
+                  You've completed the demo enquiry. No information has been sent or stored.
                 </p>
                 <div class="mt-8">
                   <a class="btn-secondary" href="/">Back to homepage</a>
@@ -243,44 +277,6 @@ import Footer from "../components/Footer.astro";
               </div>
             </div>
           </div>
-
-          <aside class="contact-aside">
-            <h1 class="text-4xl font-bold tracking-normal text-navy sm:text-5xl">Let's talk.</h1>
-            <p class="mt-6 text-lg font-light leading-8 text-slate-700">
-              Tell us a little about what you're looking for, and we'll come back to you personally, usually
-              within one business day.
-            </p>
-
-            <div class="contact-points">
-              <div class="contact-point">
-                <span class="contact-point__icon" aria-hidden="true">
-                  <img src="/images/iconoir/check-circle.svg" alt="" width="24" height="24" />
-                </span>
-                <div>
-                  <h3>Discreet by default</h3>
-                  <p>Every enquiry is handled in strict confidence.</p>
-                </div>
-              </div>
-              <div class="contact-point">
-                <span class="contact-point__icon" aria-hidden="true">
-                  <img src="/images/iconoir/message-text.svg" alt="" width="24" height="24" />
-                </span>
-                <div>
-                  <h3>A personal reply</h3>
-                  <p>You'll hear back from us directly, usually within one business day.</p>
-                </div>
-              </div>
-              <div class="contact-point">
-                <span class="contact-point__icon" aria-hidden="true">
-                  <img src="/images/iconoir/adviser-handshake.svg" alt="" width="24" height="24" />
-                </span>
-                <div>
-                  <h3>No obligation</h3>
-                  <p>A conversation to understand your needs, not a commitment.</p>
-                </div>
-              </div>
-            </div>
-          </aside>
         </div>
       </div>
     </section>

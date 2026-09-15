@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 
-// "Selected mandates" — content comes from the Decap-managed `mandates`
+// "Selected investments" — content comes from the Decap-managed `mandates`
 // collection. Cards are repeated (with aria-hidden duplicates) so the
 // marquee track can scroll -50% in a seamless loop.
 const mandates = (await getCollection("mandates")).sort(
@@ -12,15 +12,15 @@ const mandates = (await getCollection("mandates")).sort(
 <section id="mandates" class="section-block mandates-section bg-white" data-reveal-section>
   <div class="site-container">
     <div class="mandates-intro" data-reveal-item>
-      <h2 class="text-5xl font-bold tracking-normal text-navy">Selected mandates</h2>
+      <h2 class="text-5xl font-bold tracking-normal text-navy">Selected investments</h2>
       <p class="mt-5 text-base font-light leading-7 text-slate-600">
-        A snapshot of the transactions we structure and originate across debt, equity and joint venture. Specific
-        parties remain confidential.
+        A selection of our investments in established businesses and real estate projects,
+        supporting ambitious teams and long-term development.
       </p>
     </div>
   </div>
 
-  <div class="mandates-marquee" aria-label="Selected mandates">
+  <div class="mandates-marquee" aria-label="Selected investments">
     <div class="mandates-marquee__track">
       <div class="mandates-marquee__group">
         {mandates.map((mandate) => (

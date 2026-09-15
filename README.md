@@ -1,4 +1,6 @@
-# Zentria Capital
+# TGM Invest
+
+Fictional investment brand portfolio concept. The original page layouts and animations are preserved.
 
 Marketing site built with [Astro](https://astro.build), styled with Tailwind CSS v4 (build-time, via the Vite plugin) plus a hand-written stylesheet in `src/styles/global.css`. Content is edited through [Decap CMS](https://decapcms.org) at `/admin`.
 
